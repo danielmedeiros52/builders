@@ -1,0 +1,30 @@
+version: '3'
+services:
+  api-database:
+    image: mysql:5.6.44
+    container_name: api-database
+    restart: always
+    command: mysqld --user=root --verbose
+    ports:
+      - 3306:3306
+    networks:
+      - back-tier
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_ROOT_USERNAME: root
+      MYSQL_ROOT_PASSWORD: root
+  builders-api:
+    image: builders-api
+    ports:
+      - 8080:8080
+    networks:
+      - back-tier
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://api-database:3306/db?autoReconnect=true&useSSL=false
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - api-database
+networks:
+  back-tier:

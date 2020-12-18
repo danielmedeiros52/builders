@@ -1,5 +1,6 @@
 package com.builders.validation.controller;
 
+import com.builders.validation.dao.ClientDao;
 import com.builders.validation.dto.ClientDto;
 import com.builders.validation.exception.ClientException;
 import com.builders.validation.exception.ControllerExceptionHandler;
@@ -13,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientController {
 
   private final ClientService clientService;
+  private final ClientDao dao;
 
   @GetMapping
   public ResponseEntity<Page<ClientDto>> getClients(
@@ -51,6 +54,16 @@ public class ClientController {
     }
   }
 
+  @PatchMapping
+  public ResponseEntity patchClient(@Valid @RequestBody ClientDto clientDto) {
+    try {
+      return ResponseEntity.ok().body(clientService.updateClient(clientDto));
+    } catch (ClientException e) {
+      return ControllerExceptionHandler.customizeErrors(e);
+    }
+  }
+
+
   @DeleteMapping("/{id}")
   public ResponseEntity deleteClient(@PathVariable("id") int id) {
     try {
@@ -60,4 +73,5 @@ public class ClientController {
     }
     return ResponseEntity.ok().build();
   }
+
 }

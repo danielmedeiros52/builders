@@ -54,7 +54,7 @@ public class ClientService {
             .format(formattedDate) : "").build();
   }
 
-  private Client findById(int id) throws ClientException {
+  public Client findById(int id) throws ClientException {
     return clientDao.findById(id).orElseThrow(() -> new ClientException(SystemErrorMessages.CLIENT_NOT_FOUND));
   }
 
