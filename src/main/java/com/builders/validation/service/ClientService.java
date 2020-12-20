@@ -24,7 +24,7 @@ public class ClientService {
   private DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd/MM/YYYY HH:mm");
 
   public ClientDto saveNewClient(ClientDto clientDto) {
-    var client = clientDao.save(parseDtoToBuilderOfModel(clientDto).creationAt(LocalDateTime.now()).build());
+    Client client = clientDao.save(parseDtoToBuilderOfModel(clientDto).creationAt(LocalDateTime.now()).build());
     return parseModelToBuilderOfDto(client);
   }
 
@@ -74,7 +74,7 @@ public class ClientService {
   }
 
   public Page<ClientDto> getClients(Pageable page, String nome, String cpf) {
-    return (!nome.isBlank() || !cpf.isBlank()) ?
+    return (!nome.equalsIgnoreCase("") || !cpf.equalsIgnoreCase("")) ?
         clientDao.findAllByNameOrCpf(page, nome, cpf).map(this::parseModelToBuilderOfDto) :
         getAllClients(page);
   }

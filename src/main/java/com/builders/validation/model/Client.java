@@ -13,15 +13,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Getter
+@Setter
 @ApiModel(description = "Can be sent any attribute to patch", value = "Client to patch")
 public class Client {
 

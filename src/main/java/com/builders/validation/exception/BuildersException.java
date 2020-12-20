@@ -1,9 +1,11 @@
 package com.builders.validation.exception;
 
 import com.builders.validation.utils.SystemErrorMessages;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class BuildersException extends Exception {
 
   private String flow;

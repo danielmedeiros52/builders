@@ -8,8 +8,9 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -25,11 +26,16 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.HandlerMapping;
 
 @Component
-@RequiredArgsConstructor
 public class PartialUpdateArgumentResolver implements HandlerMethodArgumentResolver {
 
   private final ObjectMapper objectMapper;
   private final ApplicationContext context;
+
+  @Autowired
+  public PartialUpdateArgumentResolver(@Lazy ObjectMapper objectMapper, @Lazy ApplicationContext context) {
+    this.objectMapper = objectMapper;
+    this.context = context;
+  }
 
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
