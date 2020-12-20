@@ -10,9 +10,9 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 @Builder
 @ApiModel(description = "Model expected of Client", value = "Cliente")
 public class ClientDto {
@@ -39,7 +39,7 @@ public class ClientDto {
   @ApiModelProperty(required = true, example = "01/01/2001", position = 4)
   @JsonFormat(pattern = "dd/MM/yyyy")
   @JsonProperty("data_nascimento")
-  private LocalDate bronDate;
+  private LocalDate bornDate;
 
   @JsonProperty("criado_em")
   @ApiModelProperty(hidden = true)
@@ -51,4 +51,7 @@ public class ClientDto {
   private String updatedAt;
 
 
+  public int getAge() {
+    return LocalDate.now().getYear() - this.bornDate.getYear();
+  }
 }

@@ -1,50 +1,54 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.1'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
-	id 'idea'
-	id 'application'
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id 'idea'
+    id 'application'
+    id 'net.ltgt.apt' version '0.20'
 }
 
 group = 'com.builders'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 bootJar {
-	baseName = 'builders'
-	version = '1.21'
+    baseName = 'builders'
+    version = '1.21'
 }
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
-
+ext {
+    mapstructVersion = "1.4.1.Final"
+}
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
+apply plugin: 'net.ltgt.apt-idea'
 
 dependencies {
-	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 
-	compile 'org.springframework.boot:spring-boot-starter-web'
-	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.7'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'mysql:mysql-connector-java'
-	annotationProcessor 'org.projectlombok:lombok'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	compile group: 'com.github.java-json-tools', name: 'json-patch', version: '1.13'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.9.7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    compile group: 'com.github.java-json-tools', name: 'json-patch', version: '1.13'
 
 
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

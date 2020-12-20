@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface ClientDao extends JpaRepository<Client, Integer> {
 
   Page<Client> findAllByNameOrCpf(Pageable pageable, String name, String cpf);
+
+
 }

@@ -9,11 +9,13 @@ import com.builders.validation.utils.SystemErrorMessages;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class ClientService {
@@ -38,7 +40,7 @@ public class ClientService {
     return Client.builder()
         .name(clientDto.getName())
         .cpf(clientDto.getCpf())
-        .bornDate(clientDto.getBronDate());
+        .bornDate(clientDto.getBornDate());
   }
 
   private ClientDto parseModelToBuilderOfDto(Client client) {
@@ -49,12 +51,12 @@ public class ClientService {
         .cpf(client.getCpf())
         .age(calculatingAge(client.getBornDate()))
         .creationAt(client.getCreationAt().format(formattedDate))
-        .bronDate(client.getBornDate())
+        .bornDate(client.getBornDate())
         .updatedAt(client.getUpdatedAt() != null ? client.getUpdatedAt()
             .format(formattedDate) : "").build();
   }
 
-  public Client findById(int id) throws ClientException {
+  public Client findById(Integer id) throws ClientException {
     return clientDao.findById(id).orElseThrow(() -> new ClientException(SystemErrorMessages.CLIENT_NOT_FOUND));
   }
 
@@ -76,4 +78,12 @@ public class ClientService {
         clientDao.findAllByNameOrCpf(page, nome, cpf).map(this::parseModelToBuilderOfDto) :
         getAllClients(page);
   }
+
+  public ClientDto patch(Client client, int id) {
+    client.setId(id);
+    client.setUpdatedAt(LocalDateTime.now());
+    return parseModelToBuilderOfDto(clientDao.save(client));
+  }
+
+
 }
