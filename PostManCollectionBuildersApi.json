@@ -1,0 +1,460 @@
+{
+  "info": {
+    "_postman_id": "32df4deb-df7a-4cbf-bfb0-dc6e3286fe0f",
+    "name": "Builders Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get client",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/client",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "client"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get client filered by cpf",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/client?cpf=93129838739",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "client"
+              ],
+              "query": [
+                {
+                  "key": "cpf",
+                  "value": "93129838739"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 20 Dec 2020 19:07:10 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"content\": [\n        {\n            \"id\": 7,\n            \"nome\": \"Joe Doe\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/2001\",\n            \"criado_em\": \"20/12/2020 15:43\",\n            \"atualizado_em\": \"20/12/2020 18:36\"\n        }\n    ],\n    \"pageable\": {\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"pageSize\": 10,\n        \"pageNumber\": 0,\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalPages\": 1,\n    \"totalElements\": 1,\n    \"numberOfElements\": 1,\n    \"number\": 0,\n    \"first\": true,\n    \"size\": 10,\n    \"sort\": {\n        \"sorted\": true,\n        \"unsorted\": false,\n        \"empty\": false\n    },\n    \"empty\": false\n}"
+        },
+        {
+          "name": "Get client filtered by nome",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/client?nome=Joe Doe\"",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "client"
+              ],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "Joe Doe\""
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 20 Dec 2020 19:05:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"content\": [\n        {\n            \"id\": 7,\n            \"nome\": \"Joe Doe\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/2001\",\n            \"criado_em\": \"20/12/2020 15:43\",\n            \"atualizado_em\": \"20/12/2020 18:36\"\n        }\n    ],\n    \"pageable\": {\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"pageSize\": 10,\n        \"pageNumber\": 0,\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalPages\": 1,\n    \"totalElements\": 1,\n    \"numberOfElements\": 1,\n    \"number\": 0,\n    \"first\": true,\n    \"size\": 10,\n    \"sort\": {\n        \"sorted\": true,\n        \"unsorted\": false,\n        \"empty\": false\n    },\n    \"empty\": false\n}"
+        }
+      ]
+    },
+    {
+      "name": "Save Client",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": " {\n            \"nome\": \"Joe Doe\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/1990\"\n        }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/client",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "client"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Save Client",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\n            \"nome\": \"Joe Doe\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/1990\"\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/client",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "client"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 20 Dec 2020 19:19:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 9,\n    \"nome\": \"Joe Doe\",\n    \"cpf\": \"93129838739\",\n    \"idade\": 30,\n    \"data_nascimento\": \"01/01/1990\",\n    \"criado_em\": \"20/12/2020 19:19\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Client",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": " {\n            \"nome\": \"Joe Doe 2\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/1990\"\n        }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/client/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "client",
+            "7"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Client not found",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\n            \"nome\": \"Joe Doe 2\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/1990\"\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/client/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "client",
+                ""
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 20 Dec 2020 19:21:07 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": 404,\n    \"errorMessage\": \"Validation Error\",\n    \"instantOfError\": 1608492067785,\n    \"errors\": [\n        {\n            \"cause\": \"client_not_found\",\n            \"description\": \"Nao foi encontrato nenhum cliente com o id informado.\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "Update Client",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\n            \"nome\": \"Joe Doe 2\",\n            \"cpf\": \"93129838739\",\n            \"idade\": 19,\n            \"data_nascimento\": \"01/01/1990\"\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/client/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "client",
+                "7"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 20 Dec 2020 19:25:57 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 7,\n    \"nome\": \"Joe Doe 2\",\n    \"cpf\": \"93129838739\",\n    \"idade\": 30,\n    \"data_nascimento\": \"01/01/1990\",\n    \"criado_em\": \"20/12/2020 15:43\",\n    \"atualizado_em\": \"20/12/2020 19:25\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Patch Client",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": " {\n   \"nome\": \"Builders\"\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/client/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "client",
+            "7"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Patch Client",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\n   \"nome\": \"Builders\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/client/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "client",
+                "7"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 20 Dec 2020 19:27:36 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 7,\n    \"nome\": \"Builders\",\n    \"cpf\": \"93129838739\",\n    \"idade\": 30,\n    \"data_nascimento\": \"01/01/1990\",\n    \"criado_em\": \"20/12/2020 15:43\",\n    \"atualizado_em\": \"20/12/2020 19:27\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Client",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/client/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "client",
+            "7"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

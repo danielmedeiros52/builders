@@ -64,8 +64,8 @@ public class ClientService {
     return LocalDate.now().getYear() - bornDate.getYear();
   }
 
-  public ClientDto updateClient(ClientDto clientDto) throws ClientException {
-    Client client = findById(clientDto.getId());
+  public ClientDto updateClient(ClientDto clientDto, int id) throws ClientException {
+    Client client = findById(id);
     return parseModelToBuilderOfDto(clientDao.save(parseDtoToBuilderOfModel(clientDto)
         .id(client.getId())
         .creationAt(client.getCreationAt())
